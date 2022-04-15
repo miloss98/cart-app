@@ -64,7 +64,7 @@
 #add-btn {
   height: 70%;
   width: 15%;
-  background-color: red;
+  background-color: slateblue;
   color: white;
   border: none;
   border-radius: 10px;
@@ -110,11 +110,12 @@
   height: 2rem;
   width: 50%;
 }
-#single-item-buttons {
+#single-item-btn {
   height: 80%;
   width: 4rem;
   margin-left: 0.5rem;
-  background: yellow;
+  background: red;
+  color: white;
   border: none;
   border-radius: 5px;
 }

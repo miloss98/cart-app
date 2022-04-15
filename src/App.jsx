@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from "./Modal";
-import "./app.css";
+import Modal from "./components/Modal";
+import "./styles/app.css";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -42,11 +42,8 @@ const App = () => {
               <article className="single-item" key={id}>
                 <div className="name-div">{name}</div>
                 <div className="buttons-div">
-                  <button id="single-item-buttons" type="click">
+                  <button id="single-item-btn" type="click">
                     Remove
-                  </button>
-                  <button id="single-item-buttons" type="click">
-                    Delete
                   </button>
                 </div>
               </article>
