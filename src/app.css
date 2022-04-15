@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+.cart {
+  height: 55%;
+  width: 55%;
+  text-align: center;
+  background-color: lightgray;
+  border-radius: 15px;
+}
+/* title */
+.title-div {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: lightcoral;
+}
+.title {
+  color: black;
+  font-size: 2rem;
+  font-weight: 500;
+}
+/* inputs */
+.inputs-div {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+#input-field {
+  height: 70%;
+  width: 40%;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding-left: 1.5rem;
+  margin-right: 0.5rem;
+}
+#input-field::placeholder {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+#add-btn {
+  height: 70%;
+  width: 15%;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+#add-btn:hover {
+  cursor: pointer;
+  filter: brightness(150%);
+  height: 71%;
+}
+/* list */
+.items {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem;
+}
+.single-item {
+  height: 2rem;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding: 0rem 0.3rem 0rem 0.3rem;
+}
+.name-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 2rem;
+  width: 50%;
+}
+.buttons-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 2rem;
+  width: 50%;
+}
+#single-item-buttons {
+  height: 80%;
+  width: 4rem;
+  margin-left: 0.5rem;
+  background: yellow;
+  border: none;
+  border-radius: 5px;
+}
+#single-item-buttons:hover {
+  cursor: pointer;
+}
