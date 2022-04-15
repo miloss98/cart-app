@@ -119,6 +119,6 @@
   border: none;
   border-radius: 5px;
 }
-#single-item-buttons:hover {
+#single-item-btn:hover {
   cursor: pointer;
 }
