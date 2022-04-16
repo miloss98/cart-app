@@ -1,87 +1,12 @@
-import { useReducer, useState } from "react";
+import { useGlobalContext } from "./context";
 import Modal from "./components/Modal";
 import "./styles/app.css";
 
 const App = () => {
-  const [name, setName] = useState("");
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "ADD_TO_CART":
-        const newItem = [...state.cart, action.payload];
-        return {
-          ...state,
-          cart: newItem,
-          isModalOpen: true,
-          modalContent: "Item added!",
-          alert: "success",
-        };
-      case "EMPTY_VALUE":
-        return {
-          ...state,
-          isModalOpen: true,
-          modalContent: "Please enter some value!",
-          alert: "danger",
-        };
-      case "REMOVE_ITEM":
-        const filteredCart = state.cart.filter((item) => {
-          if (item.id !== action.payload) {
-            return item;
-          }
-        });
-        return {
-          ...state,
-          cart: filteredCart,
-          isModalOpen: true,
-          modalContent: "Item removed!",
-          alert: "danger",
-        };
-      case "CLOSE_MODAL":
-        return {
-          ...state,
-          isModalOpen: false,
-          modalContent: "",
-          alert: "",
-        };
-    }
-    return state;
-  };
-  //Reducer
-  const initialState = {
-    cart: [],
-    isModalOpen: false,
-    modalContent: "",
-    alert: "",
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const handleButton = (e) => {
-    e.preventDefault();
-    if (name) {
-      const newItem = { id: new Date().getTime().toString(), name };
-      dispatch({ type: "ADD_TO_CART", payload: newItem });
-      setName("");
-    } else {
-      dispatch({ type: "EMPTY_VALUE" });
-    }
-  };
-  const removeItem = (id) => {
-    dispatch({ type: "REMOVE_ITEM", payload: id });
-  };
-
-  const closeModal = () => {
-    dispatch({ type: "CLOSE_MODAL" });
-  };
-
+  const { name, setName, state, removeItem, handleButton } = useGlobalContext();
   return (
     <section className="container">
-      {state.isModalOpen && (
-        <Modal
-          modalContent={state.modalContent}
-          alert={state.alert}
-          closeModal={closeModal}
-        />
-      )}
+      {state.isModalOpen && <Modal />}
       <article className="cart">
         <div className="title-div">
           <h2 className="title"> Cart app </h2>

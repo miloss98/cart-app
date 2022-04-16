@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import { useGlobalContext } from "../context";
 import "./../styles/modal.css";
 
-const Modal = ({ modalContent, closeModal, alert }) => {
+const Modal = () => {
+  const { state, closeModal } = useGlobalContext();
   useEffect(() => {
     setTimeout(() => {
       closeModal();
@@ -10,7 +12,7 @@ const Modal = ({ modalContent, closeModal, alert }) => {
 
   return (
     <div className="modal-container">
-      <h4 className={alert}> {modalContent}</h4>
+      <h4 className={state.alert}> {state.modalContent}</h4>
     </div>
   );
 };
