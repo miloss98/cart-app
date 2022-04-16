@@ -36,6 +36,13 @@ const App = () => {
           modalContent: "Item removed!",
           alert: "danger",
         };
+      case "CLOSE_MODAL":
+        return {
+          ...state,
+          isModalOpen: false,
+          modalContent: "",
+          alert: "",
+        };
     }
     return state;
   };
@@ -62,7 +69,9 @@ const App = () => {
     dispatch({ type: "REMOVE_ITEM", payload: id });
   };
 
-  const closeModal = () => {};
+  const closeModal = () => {
+    dispatch({ type: "CLOSE_MODAL" });
+  };
 
   return (
     <section className="container">
