@@ -74,6 +74,12 @@
   cursor: pointer;
   filter: brightness(120%);
 }
+/* if list is empty */
+.empty-list {
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  color: red;
+}
 /* list */
 .items {
   height: 70%;
@@ -123,10 +129,4 @@
 }
 #single-item-btn:hover {
   cursor: pointer;
-}
-/* empty */
-.empty-list {
-  padding-top: 1rem;
-  font-size: 1.5rem;
-  color: red;
 }

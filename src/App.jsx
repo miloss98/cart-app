@@ -1,49 +1,75 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Modal from "./components/Modal";
 import "./styles/app.css";
 
 const App = () => {
   const [name, setName] = useState("");
-  const [data, setData] = useState([]);
-  const [modal, setModal] = useState({
-    isOpen: false,
-    modalContent: "modal content",
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "ADD_TO_CART":
+        const newItem = [...state.cart, action.payload];
+        return {
+          ...state,
+          cart: newItem,
+          isModalOpen: true,
+          modalContent: "Item added!",
+          alert: "success",
+        };
+      case "EMPTY_VALUE":
+        return {
+          ...state,
+          isModalOpen: true,
+          modalContent: "Please enter some value!",
+          alert: "danger",
+        };
+      case "REMOVE_ITEM":
+        const filteredCart = state.cart.filter((item) => {
+          if (item.id !== action.payload) {
+            return item;
+          }
+        });
+        return {
+          ...state,
+          cart: filteredCart,
+          isModalOpen: true,
+          modalContent: "Item removed!",
+          alert: "danger",
+        };
+    }
+    return state;
+  };
+  //Reducer
+  const initialState = {
+    cart: [],
+    isModalOpen: false,
+    modalContent: "",
     alert: "",
-  });
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleButton = (e) => {
     e.preventDefault();
     if (name) {
-      setModal({ isOpen: true, modalContent: "Item added!", alert: "success" });
-      setData([...data, { id: new Date().getTime().toString(), name }]);
+      const newItem = { id: new Date().getTime().toString(), name };
+      dispatch({ type: "ADD_TO_CART", payload: newItem });
       setName("");
     } else {
-      setModal({
-        isOpen: true,
-        modalContent: "Please enter some value!",
-        alert: "danger",
-      });
+      dispatch({ type: "EMPTY_VALUE" });
     }
   };
   const removeItem = (id) => {
-    const filteredList = data.filter((item) => {
-      if (item.id !== id) {
-        return item;
-      }
-    });
-    setData(filteredList);
-    setModal({ isOpen: true, modalContent: "Item removed!", alert: "danger" });
+    dispatch({ type: "REMOVE_ITEM", payload: id });
   };
 
-  const closeModal = () => {
-    setModal({ isOpen: false, modalContent: "" });
-  };
+  const closeModal = () => {};
+
   return (
     <section className="container">
-      {modal.isOpen && (
+      {state.isModalOpen && (
         <Modal
-          modalContent={modal.modalContent}
-          alert={modal.alert}
+          modalContent={state.modalContent}
+          alert={state.alert}
           closeModal={closeModal}
         />
       )}
@@ -64,10 +90,10 @@ const App = () => {
           </button>
         </div>
         <div className="items">
-          {data.length < 1 && (
+          {state.cart.length < 1 && (
             <h1 className="empty-list"> The list is empty</h1>
           )}
-          {data.map((item) => {
+          {state.cart.map((item) => {
             const { id, name } = item;
             return (
               <article className="single-item" key={id}>
