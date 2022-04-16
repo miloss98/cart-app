@@ -15,8 +15,8 @@
   background-color: grey;
 }
 .cart {
-  height: 55%;
-  width: 55%;
+  height: 50%;
+  width: 50%;
   text-align: center;
   background-color: lightgray;
   border-radius: 15px;
@@ -72,8 +72,7 @@
 }
 #add-btn:hover {
   cursor: pointer;
-  filter: brightness(150%);
-  height: 71%;
+  filter: brightness(120%);
 }
 /* list */
 .items {
@@ -101,6 +100,9 @@
   align-items: flex-start;
   height: 2rem;
   width: 50%;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 .buttons-div {
   display: flex;
