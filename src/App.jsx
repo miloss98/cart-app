@@ -64,6 +64,9 @@ const App = () => {
           </button>
         </div>
         <div className="items">
+          {data.length < 1 && (
+            <h1 className="empty-list"> The list is empty</h1>
+          )}
           {data.map((item) => {
             const { id, name } = item;
             return (
